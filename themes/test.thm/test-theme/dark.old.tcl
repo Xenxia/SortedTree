@@ -4,11 +4,11 @@
 
 package require Tk 8.6
 
-namespace eval ttk::theme::azure-dark {
+namespace eval ttk::theme::test-dark {
     variable version 2.0
-    package provide ttk::theme::azure-dark $version
+    package provide ttk::theme::test-dark $version
 
-    ttk::style theme create azure-dark -parent clam -settings {
+    ttk::style theme create test-dark -parent vista -settings {
         proc load_images {imgdir} {
             variable I
             foreach file [glob -directory $imgdir *.png] {
@@ -65,7 +65,7 @@ namespace eval ttk::theme::azure-dark {
         ttk::style layout Accent.TButton {
             AccentButton.button -children {
                 AccentButton.padding -children {
-                    AccentButton.label -side left -expand true
+                    AccentButton.label -side left -expand true -sticky n
                 } 
             }
         }
@@ -197,20 +197,7 @@ namespace eval ttk::theme::azure-dark {
         # Elements
 
         # Button
-        # ttk::style configure TButton -width -10 -anchor center
-
-        # ttk::style element create Button.button image \
-        #     [list $I(rect-basic) \
-        #     	{selected disabled} $I(rect-disable) \
-        #         disabled $I(rect-disable) \
-        #         pressed $I(rect-pressed) \
-        #         selected $I(rect-basic) \
-        #         active $I(button-hover) \
-        #     ] \
-        #     -border 4 -sticky ewns
-
-        # Button
-        ttk::style configure TButton -width -10 -anchor center
+        ttk::style configure TButton -padding {8 4 8 4} -width -10 -anchor center
 
         ttk::style element create Button.button image \
             [list $I(rect-basic) \
@@ -219,8 +206,7 @@ namespace eval ttk::theme::azure-dark {
                 pressed $I(rect-pressed) \
                 selected $I(rect-basic) \
                 active $I(button-hover) \
-            ] \
-            -border 4 -sticky ewns
+            ] -border 4 -sticky ewns
 
         # Toolbutton
         ttk::style configure Toolbutton -padding {8 4 8 4} -width -10 -anchor center

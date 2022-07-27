@@ -434,8 +434,10 @@ window.resizable(0, 0)
 # window.columnconfigure(0, weight=1)
 # window.rowconfigure(2, weight=1)
 
-# theme = ManagerThemes(window).setTheme("azure", themes="dark")
-
+theme = ManagerThemes(window).setTheme("test", "dark")
+log.debug(theme.get_theme_use())
+log.debug(theme.get_info_element('TLabelframe'))
+# exit()
 param_d = {
     "exe_path": exe_path,
     "sort_func": sortMain,
@@ -449,8 +451,6 @@ main_menu_w: menu_sort = main_frame.getClassWidget("menu_sort")
 main_menu_w.button_tree.configure(command=sortMain)
 menu_option_w: menu_option = main_frame.getClassWidget("menu_option")
 menu_option_w.button_moovToRoot.configure(command=moveToRoot)
-
-
 
 footer = Frame_up(master=window, width=700, height=30)
 # footer.propagate(False)
@@ -557,7 +557,7 @@ last_version = update.get_version()
 label_version_text = Label_up(frame_version, text="version :")
 label_version_text.gridPosSize(row=0, column=0, sticky=W).show()
 
-label_version = Button_up(frame_version, state=DISABLED, text=VERSION, width=7)
+label_version = Button_up(frame_version, state=DISABLED, text=VERSION, width=7, style="nobg.TButton")
 label_version.gridPosSize(row=0, column=1, pady=(1, 0)).show()
 
 if last_version != "none" and last_version != VERSION:
@@ -570,7 +570,7 @@ if last_version != "none" and last_version != VERSION:
 # button_clear = Button_up(window, bg="#555555", fg="#00ca00", activebackground="#555555", text=langage.lang['UI']['MAIN_MENU']['button_clear'], command=lambda: console1.clearTerminal())
 # button_clear.placePosSize(x=255, y=24, width=90, height=24)
 
-button_option = Button_up(master=footer, image=option_image, command=lambda: main_frame.showWidget("menu_option"))
+button_option = Button_up(master=footer, image=option_image, command=lambda: main_frame.showWidget("menu_option"), style="nobg.TButton")
 button_option.placePosSize(x=16, y=16, width=32, height=32, anchor="center").show()
 
 
